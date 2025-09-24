@@ -15,6 +15,7 @@ export interface NavItem {
     href: string;
     icon?: LucideIcon;
     isActive?: boolean;
+    forAdmin?: boolean;
 }
 
 export type AppPageProps<T extends Record<string, unknown> = Record<string, unknown>> = T & {
@@ -33,6 +34,31 @@ export interface User {
     email_verified_at: string | null;
     created_at: string;
     updated_at: string;
+    is_admin: boolean;
+}
+
+export interface ItemType {
+    id: number;
+    name: string;
+    description: string | null;
+    created_at: string;
+    updated_at: string;
+}
+
+export interface Item {
+    id: number;
+    name: string;
+    quantity: number;
+    unit: string | null;
+    price_per_unit: number | undefined;
+    created_at: string;
+    updated_at: string;
+    item_type_id: number | null;
+    item_type: ItemType | null;
+}
+
+export interface ResourceCollection<T> {
+    data: T[];
 }
 
 export type BreadcrumbItemType = BreadcrumbItem;
